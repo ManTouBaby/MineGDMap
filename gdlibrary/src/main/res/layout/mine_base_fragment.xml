@@ -4,5 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
+    <com.amap.api.navi.AMapNaviView
+        android:id="@+id/mine_map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

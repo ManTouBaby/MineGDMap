@@ -9,14 +9,12 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import androidx.annotation.IdRes;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
+import com.amap.api.navi.AMapNaviViewOptions;
+import com.amap.api.navi.enums.IconType;
 import com.amap.api.navi.model.AMapCalcRouteResult;
 import com.amap.api.navi.model.AMapLaneInfo;
 import com.amap.api.navi.model.AMapModelCross;
@@ -38,6 +36,10 @@ import com.hrw.gdlibrary.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 
 /**
  * @version 1.0.0
@@ -45,12 +47,10 @@ import java.util.List;
  * @date:2020/03/03 12:26
  * @desc:
  */
-public abstract class BaseMapActivity extends AppCompatActivity implements AMapNaviListener, AMapNaviViewListener {
+public abstract class BaseNaviMapActivity extends AppCompatActivity implements AMapNaviListener, AMapNaviViewListener {
     protected AMapNavi mAMapNavigation;
     protected AMapNaviView mAMapNavigationView;
 
-    protected NaviLatLng mEndLatlng = new NaviLatLng(40.084894, 116.603039);
-    protected NaviLatLng mStartLatlng = new NaviLatLng(39.825934, 116.342972);
     protected final List<NaviLatLng> sList = new ArrayList<NaviLatLng>();
     protected final List<NaviLatLng> eList = new ArrayList<NaviLatLng>();
     protected List<NaviLatLng> mWayPointList = new ArrayList<NaviLatLng>();
@@ -60,16 +60,24 @@ public abstract class BaseMapActivity extends AppCompatActivity implements AMapN
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAMapNavigation = AMapNavi.getInstance(getApplicationContext());
-        setContentView(R.layout.mine_map_base_activity);
-        mAMapNavigationView = findViewById(R.id.mine_amnv_show);
         mAMapNavigation.addAMapNaviListener(this);
-        mAMapNavigationView.setAMapNaviViewListener(this);
-        mAMapNavigationView.onCreate(savedInstanceState);
         mAMapNavigation.setUseInnerVoice(true);
+        setContentView(R.layout.mine_map_navi_base_activity);
+        mAMapNavigationView = findViewById(R.id.mine_amnv_show);
+        mAMapNavigationView.onCreate(savedInstanceState);
+        mAMapNavigationView.setAMapNaviViewListener(this);
+
+        AMapNaviViewOptions options = new AMapNaviViewOptions();
+        options.setLayoutVisible(false);
+        options.setTrafficLine(false);
+//        options.setTrafficBarEnabled(false);
+        options.setTilt(30);
+        options.setAutoChangeZoom(true);
+        options.setAfterRouteAutoGray(true);
+        mAMapNavigationView.setViewOptions(options);
+
         //设置模拟导航的行车速度
         mAMapNavigation.setEmulatorNaviSpeed(75);
-        sList.add(mStartLatlng);
-        eList.add(mEndLatlng);
 
         mView = LayoutInflater.from(this).inflate(createLayout(), (ViewGroup) getDelegate().findViewById(android.R.id.content), false);
         mView.setBackgroundColor(Color.parseColor("#00000000"));
@@ -237,7 +245,8 @@ public abstract class BaseMapActivity extends AppCompatActivity implements AMapN
     @Override
     public void onNaviInfoUpdate(NaviInfo naviinfo) {
         //导航过程中的信息更新，请看NaviInfo的具体说明
-        System.out.println("导航更新:"+naviinfo.m_NextRoadName);
+        IconType iconType = new IconType();
+        System.out.println("导航更新:" + naviinfo.m_NextRoadName + "图标:" + naviinfo.getIconType());
     }
 
     @Override
