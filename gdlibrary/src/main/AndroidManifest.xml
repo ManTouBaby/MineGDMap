@@ -13,8 +13,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
-        <activity android:name=".navi.activity.DefaultNavigationMapActivity" />
-        <activity android:name=".navi.activity.DefaultMapActivity" />
+        <activity android:name=".navi.DefaultMapActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
     </application>

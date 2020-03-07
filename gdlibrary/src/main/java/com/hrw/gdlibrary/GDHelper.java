@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.amap.api.navi.AMapNavi;
-import com.hrw.gdlibrary.navi.activity.DefaultMapActivity;
+import com.amap.api.navi.model.NaviLatLng;
+import com.hrw.gdlibrary.navi.DefaultMapActivity;
+
+import java.io.Serializable;
 
 /**
  * @version 1.0.0
@@ -13,9 +16,10 @@ import com.hrw.gdlibrary.navi.activity.DefaultMapActivity;
  * @desc:
  */
 public class GDHelper {
-    private Builder builder;
+    private Builder mBuilder;
 
     private GDHelper(Builder builder) {
+        mBuilder = builder;
     }
 
 
@@ -23,23 +27,29 @@ public class GDHelper {
 
     }
 
-    public void openNavigation(Context context) {
+
+    public void openNavigation(Context context, NaviLatLng stLocation, NaviLatLng endLocation) {
         Intent intent = new Intent(context, DefaultMapActivity.class);
+        intent.putExtra("Builder", mBuilder);
+        intent.putExtra("stLocation", stLocation);
+        intent.putExtra("endLocation", endLocation);
         context.startActivity(intent);
     }
 
-    public static class Builder {
-        //        注意: 不走高速与高速优先不能同时为true 高速优先与避免收费不能同时为true
+    public static class Builder implements Serializable {
+        // 注意: 不走高速与高速优先不能同时为true 高速优先与避免收费不能同时为true
         private String apiKey = "";
         private boolean isCongestion = true;//是否避免拥堵
         private boolean isAvoidHighWay = false;//是否避免高速
         private boolean isAvoidCost = false;//是否避免收费
         private boolean isHighWay = false;//是否高速优先
-        private boolean isMultipleroute = false;//是否启动多路径
+        private boolean isMultipleRoute = false;//是否启动多路径
+
 
         public String getApiKey() {
             return apiKey;
         }
+
 
         public Builder setApiKey(String apiKey) {
             this.apiKey = apiKey;
@@ -73,8 +83,8 @@ public class GDHelper {
         }
 
 
-        public Builder setMultipleroute(boolean multipleroute) {
-            isMultipleroute = multipleroute;
+        public Builder setMultipleRoute(boolean multipleroute) {
+            isMultipleRoute = multipleroute;
             return this;
         }
 
@@ -95,8 +105,8 @@ public class GDHelper {
             return isHighWay;
         }
 
-        public boolean isMultipleroute() {
-            return isMultipleroute;
+        public boolean isMultipleRoute() {
+            return isMultipleRoute;
         }
 
         public GDHelper build(Context context) {

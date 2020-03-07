@@ -1,4 +1,4 @@
-package com.hrw.gdlibrary.navi.activity;
+package com.hrw.gdlibrary.navi;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -47,7 +47,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @date:2020/03/03 12:26
  * @desc:
  */
-public abstract class BaseNaviMapActivity extends AppCompatActivity implements AMapNaviListener, AMapNaviViewListener {
+public abstract class BaseMapActivity extends AppCompatActivity implements AMapNaviListener, AMapNaviViewListener {
     protected AMapNavi mAMapNavigation;
     protected AMapNaviView mAMapNavigationView;
 
@@ -59,10 +59,16 @@ public abstract class BaseNaviMapActivity extends AppCompatActivity implements A
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.mine_map_navi_base_activity);
+        mView = LayoutInflater.from(this).inflate(createLayout(), (ViewGroup) getDelegate().findViewById(android.R.id.content), false);
+        mView.setBackgroundColor(Color.parseColor("#00000000"));
+        addContentView(mView, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        init();
+
         mAMapNavigation = AMapNavi.getInstance(getApplicationContext());
         mAMapNavigation.addAMapNaviListener(this);
         mAMapNavigation.setUseInnerVoice(true);
-        setContentView(R.layout.mine_map_navi_base_activity);
+
         mAMapNavigationView = findViewById(R.id.mine_amnv_show);
         mAMapNavigationView.onCreate(savedInstanceState);
         mAMapNavigationView.setAMapNaviViewListener(this);
@@ -79,11 +85,7 @@ public abstract class BaseNaviMapActivity extends AppCompatActivity implements A
         //设置模拟导航的行车速度
         mAMapNavigation.setEmulatorNaviSpeed(75);
 
-        mView = LayoutInflater.from(this).inflate(createLayout(), (ViewGroup) getDelegate().findViewById(android.R.id.content), false);
-        mView.setBackgroundColor(Color.parseColor("#00000000"));
-        addContentView(mView, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
-        init();
     }
 
     protected abstract int createLayout();

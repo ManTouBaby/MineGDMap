@@ -12,12 +12,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
+            android:background="@drawable/svg_back"
             android:gravity="center"
-            android:text="返回"
             android:textColor="#FFF"
             android:textSize="16sp" />
 
@@ -26,36 +25,42 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
+            <ImageView
                 android:id="@+id/mine_tv_car"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="naviTypeClick"
-                android:text="轿车"
+                android:onClick="navigationTypeClick"
+                android:paddingTop="14dp"
+                android:paddingBottom="6dp"
+                android:src="@drawable/icon_svg_car"
                 android:textColor="#F5f5f5"
                 android:textSize="18sp" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/mine_tv_bike"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="naviTypeClick"
-                android:text="自行车"
+                android:onClick="navigationTypeClick"
+                android:paddingTop="15dp"
+                android:paddingBottom="4dp"
+                android:src="@drawable/icon_svg_bike"
                 android:textColor="#F5f5f5"
                 android:textSize="18sp" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/mine_tv_step"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="naviTypeClick"
-                android:text="步行"
+                android:onClick="navigationTypeClick"
+                android:paddingTop="14dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/icon_svg_walk"
                 android:textColor="#F5f5f5"
                 android:textSize="18sp" />
 
@@ -81,121 +86,20 @@
             android:id="@+id/mine_ll_navigation_scheme3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:visibility="visible">
 
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/icon_rout_line_bg"
-                android:orientation="vertical"
-                android:padding="2dp">
+            <include layout="@layout/item_navigation_scheme" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_blue_gray_bg"
-                    android:gravity="center"
-                    android:padding="1dp"
-                    android:text="推挤路线"
-                    android:textColor="@color/color_white_black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="30分钟"
-                    android:textColor="@color/color_blue_black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="最短路线"
-                    android:textColor="@color/color_blue_black"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/item_navigation_scheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/icon_rout_line_bg"
-                android:orientation="vertical"
-                android:padding="2dp">
+                android:layout_weight="1" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_blue_gray_bg"
-                    android:gravity="center"
-                    android:padding="1dp"
-                    android:text="方案预选一"
-                    android:textColor="@color/color_white_black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="30分钟"
-                    android:textColor="@color/color_blue_black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="最短路线"
-                    android:textColor="@color/color_blue_black"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/icon_rout_line_bg"
-                android:orientation="vertical"
-                android:padding="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_blue_gray_bg"
-                    android:gravity="center"
-                    android:padding="1dp"
-                    android:text="方案预选二"
-                    android:textColor="@color/color_white_black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="30分钟"
-                    android:textColor="@color/color_blue_black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="最短路线"
-                    android:textColor="@color/color_blue_black"
-                    android:textSize="10sp" />
-            </LinearLayout>
+            <include layout="@layout/item_navigation_scheme" />
         </LinearLayout>
 
         <LinearLayout
@@ -204,82 +108,14 @@
             android:layout_height="wrap_content"
             android:visibility="gone">
 
+            <include layout="@layout/item_navigation_scheme" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/icon_rout_line_bg"
-                android:orientation="vertical"
-                android:padding="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_blue_gray_bg"
-                    android:gravity="center"
-                    android:padding="1dp"
-                    android:text="推挤路线"
-                    android:textColor="@color/color_white_black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="30分钟"
-                    android:textColor="@color/color_blue_black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="最短路线"
-                    android:textColor="@color/color_blue_black"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
-            <LinearLayout
+            <include
+                layout="@layout/item_navigation_scheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/icon_rout_line_bg"
-                android:orientation="vertical"
-                android:padding="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_blue_gray_bg"
-                    android:gravity="center"
-                    android:padding="1dp"
-                    android:text="方案预选一"
-                    android:textColor="@color/color_white_black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="30分钟"
-                    android:textColor="@color/color_blue_black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="最短路线"
-                    android:textColor="@color/color_blue_black"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -289,45 +125,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone">
 
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/icon_rout_line_bg"
-                android:orientation="vertical"
-                android:padding="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_blue_gray_bg"
-                    android:gravity="center"
-                    android:padding="1dp"
-                    android:text="推挤路线"
-                    android:textColor="@color/color_white_black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="30分钟"
-                    android:textColor="@color/color_blue_black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="最短路线"
-                    android:textColor="@color/color_blue_black"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
-
+            <include layout="@layout/item_navigation_scheme" />
         </LinearLayout>
 
         <LinearLayout

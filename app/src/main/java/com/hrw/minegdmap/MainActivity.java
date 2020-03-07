@@ -3,9 +3,10 @@ package com.hrw.minegdmap;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.hrw.gdlibrary.DatesHolder;
 import com.hrw.gdlibrary.GDHelper;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnClick(View view) {
-        gdHelper.openNavigation(this);
+        gdHelper.openNavigation(this, DatesHolder.getAiJiaGY(),DatesHolder.getGongYuanQian());
     }
 
 }

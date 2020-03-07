@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:background="@drawable/icon_rout_line_bg"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_blue_gray_bg"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:text="推挤路线"
+        android:textColor="@color/color_white_black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/mine_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="30分钟"
+        android:textColor="@color/color_blue_black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mine_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="最短路线"
+        android:textColor="@color/color_blue_black"
+        android:textSize="10sp" />
+</LinearLayout>
