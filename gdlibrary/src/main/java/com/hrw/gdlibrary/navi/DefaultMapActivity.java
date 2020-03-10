@@ -1,6 +1,8 @@
 package com.hrw.gdlibrary.navi;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.util.SparseArray;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.navi.AMapNaviListener;
@@ -25,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.ColorRes;
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * @author:MtBaby
@@ -43,6 +47,7 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
     private LinearLayout mLinearLayout3;
     private TextView mTVRedGreedCount;
     private TextView mTVStartNavigation;
+    private TextView tvBack;
 
 
     private List<LinearLayout> vNavigationScheme = new ArrayList<>();
@@ -83,10 +88,42 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
                 startNavigation();
             }
         });
-
+        tvBack = findViewById(R.id.mine_back);
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTwo();
+            }
+        });
 
         setStatueColor(R.color.map_main_color);
         mIvCar.setSelected(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        showTwo();
+    }
+
+    private void showTwo() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle("提示")
+                .setMessage("确定退出导航？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //ToDo: 你想做的事情
+                        Toast.makeText(DefaultMapActivity.this, "已退出导航", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //ToDo: 你想做的事情
+//                        Toast.makeText(DefaultMapActivity.this, "关闭按钮", Toast.LENGTH_LONG).show();
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.create().show();
     }
 
     private void setStatueColor(@ColorRes int color) {
@@ -104,7 +141,7 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
         mLlNavigationSchemeContainer.setVisibility(View.GONE);
         mLToolbar.setAnimation(AnimationUtil.moveToViewTop());
         mLlNavigationSchemeContainer.setAnimation(AnimationUtil.moveToViewBottom());
-        mAMapNavigation.startNavi(NaviType.EMULATOR);
+        mAMapNavigation.startNavi(NaviType.GPS);
         mAMapNavigationView.getViewOptions().setLayoutVisible(true);
     }
 
@@ -122,12 +159,10 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
     protected void onDestroy() {
         super.onDestroy();
         mAMapNavigationView.getMap().clear();
-        routeOverlays.clear();
+        clearRout();
         mapNaviPathSparseArray.clear();
         vNavigationScheme.clear();
 
-        mAMapNavigation.stopNavi();
-        mAMapNavigation.destroy();
     }
 
     @Override
@@ -170,9 +205,9 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
 
     @Override
     public void onCalculateRouteSuccess(AMapCalcRouteResult aMapCalcRouteResult) {
-        System.out.println("路线规划成功:" + aMapCalcRouteResult.toString());
-        mAMapNavigationView.getMap().clear();
-        routeOverlays.clear();
+//        System.out.println("路线规划成功:" + aMapCalcRouteResult.toString());
+
+        clearRout();
         mapNaviPathSparseArray.clear();
         vNavigationScheme.clear();
         int[] routeid = aMapCalcRouteResult.getRouteid();
@@ -239,6 +274,13 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
 
     }
 
+    private void clearRout() {
+        for (int i = 0; i < routeOverlays.size(); i++) {
+            routeOverlays.valueAt(i).removeFromMap();
+        }
+        routeOverlays.clear();
+    }
+
     private void selectLine(int index) {
         for (int i = 0; i < vNavigationScheme.size(); i++) {
             vNavigationScheme.get(i).setSelected(false);
@@ -258,8 +300,10 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
         AMap aMap = mAMapNavigationView.getMap();
         RouteOverLay routeOverLay = new RouteOverLay(aMap, path, this);
         routeOverLay.setTrafficLine(true);
-//        routeOverLay.setStartPointBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.icon_start));
-//        routeOverLay.setEndPointBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.icon_end));
+        if (mBuilder.getStIcon() != 0)
+            routeOverLay.setStartPointBitmap(BitmapFactory.decodeResource(getResources(), mBuilder.getStIcon()));
+        if (mBuilder.getEndIcon() != 0)
+            routeOverLay.setEndPointBitmap(BitmapFactory.decodeResource(getResources(), mBuilder.getEndIcon()));
         routeOverLay.addToMap();
         routeOverLay.zoomToSpan(120);
         routeOverlays.put(routeId, routeOverLay);

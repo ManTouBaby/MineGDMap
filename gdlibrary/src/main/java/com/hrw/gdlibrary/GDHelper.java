@@ -9,6 +9,8 @@ import com.hrw.gdlibrary.navi.DefaultMapActivity;
 
 import java.io.Serializable;
 
+import androidx.annotation.DrawableRes;
+
 /**
  * @version 1.0.0
  * @author:hrw
@@ -45,6 +47,26 @@ public class GDHelper {
         private boolean isHighWay = false;//是否高速优先
         private boolean isMultipleRoute = false;//是否启动多路径
 
+        private int stIcon = 0;
+        private int endIcon = 0;
+
+        public int getStIcon() {
+            return stIcon;
+        }
+
+        public Builder setStIcon(@DrawableRes int stIcon) {
+            this.stIcon = stIcon;
+            return this;
+        }
+
+        public int getEndIcon() {
+            return endIcon;
+        }
+
+        public Builder setEndIcon(@DrawableRes int endIcon) {
+            this.endIcon = endIcon;
+            return this;
+        }
 
         public String getApiKey() {
             return apiKey;
