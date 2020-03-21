@@ -14,7 +14,6 @@ import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
 import com.amap.api.navi.AMapNaviViewOptions;
-import com.amap.api.navi.enums.IconType;
 import com.amap.api.navi.model.AMapCalcRouteResult;
 import com.amap.api.navi.model.AMapLaneInfo;
 import com.amap.api.navi.model.AMapModelCross;
@@ -63,11 +62,12 @@ public abstract class BaseMapActivity extends AppCompatActivity implements AMapN
         mView = LayoutInflater.from(this).inflate(createLayout(), (ViewGroup) getDelegate().findViewById(android.R.id.content), false);
         mView.setBackgroundColor(Color.parseColor("#00000000"));
         addContentView(mView, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-        init();
+
 
         mAMapNavigation = AMapNavi.getInstance(getApplicationContext());
         mAMapNavigation.addAMapNaviListener(this);
         mAMapNavigation.setUseInnerVoice(true);
+
 
         mAMapNavigationView = findViewById(R.id.mine_amnv_show);
         mAMapNavigationView.onCreate(savedInstanceState);
@@ -85,7 +85,7 @@ public abstract class BaseMapActivity extends AppCompatActivity implements AMapN
         //设置模拟导航的行车速度
         mAMapNavigation.setEmulatorNaviSpeed(75);
 
-
+        init();
     }
 
     protected abstract int createLayout();
@@ -247,8 +247,8 @@ public abstract class BaseMapActivity extends AppCompatActivity implements AMapN
     @Override
     public void onNaviInfoUpdate(NaviInfo naviinfo) {
         //导航过程中的信息更新，请看NaviInfo的具体说明
-        IconType iconType = new IconType();
-        System.out.println("导航更新:" + naviinfo.m_NextRoadName + "图标:" + naviinfo.getIconType());
+//        IconType iconType = new IconType();
+//        System.out.println("导航更新:" + naviinfo.m_NextRoadName + "图标:" + naviinfo.getIconType());
     }
 
     @Override

@@ -24,17 +24,16 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
     //高德地图
     api 'com.amap.api:location:4.4.0'
-//    api 'com.amap.api:3dmap:7.2.0'
-//    api 'com.amap.api:map2d:5.2.0'
+    //    api 'com.amap.api:3dmap:7.2.0'
+    //    api 'com.amap.api:map2d:5.2.0'
     api 'com.amap.api:navi-3dmap:7.2.0_3dmap7.2.0'
     api 'com.amap.api:search:6.1.0'
+    api files('libs/Msc.jar')
 }

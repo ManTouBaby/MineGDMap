@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.amap.api.navi.AMapNavi;
+import com.amap.api.navi.enums.NaviType;
 import com.amap.api.navi.model.NaviLatLng;
 import com.hrw.gdlibrary.navi.DefaultMapActivity;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 
 import java.io.Serializable;
 
@@ -38,6 +41,7 @@ public class GDHelper {
         context.startActivity(intent);
     }
 
+
     public static class Builder implements Serializable {
         // 注意: 不走高速与高速优先不能同时为true 高速优先与避免收费不能同时为true
         private String apiKey = "";
@@ -47,8 +51,51 @@ public class GDHelper {
         private boolean isHighWay = false;//是否高速优先
         private boolean isMultipleRoute = false;//是否启动多路径
 
+        private boolean isOpenXFYunVoice = false;//是否开启讯飞语音播放
+        private String xFYunId = "5bee8844";//测试使用ID
+        private XFYunOption xfYunOption = new XFYunOption();
+
         private int stIcon = 0;
         private int endIcon = 0;
+        private int mNaviType = NaviType.GPS;//开启导航时类型
+
+
+        public XFYunOption getXfYunOption() {
+            return xfYunOption;
+        }
+
+        public Builder setXfYunOption(XFYunOption xfYunOption) {
+            this.xfYunOption = xfYunOption;
+            return this;
+        }
+
+
+        public boolean isOpenXFYunVoice() {
+            return isOpenXFYunVoice;
+        }
+
+        public Builder setOpenXFYunVoice(boolean openXFYunVoice) {
+            isOpenXFYunVoice = openXFYunVoice;
+            return this;
+        }
+
+        public String getxFYunId() {
+            return xFYunId;
+        }
+
+        public Builder setxFYunId(String xFYunId) {
+            this.xFYunId = xFYunId;
+            return this;
+        }
+
+        public int getNaviType() {
+            return mNaviType;
+        }
+
+        public Builder setNaviType(int naviType) {
+            this.mNaviType = naviType;
+            return this;
+        }
 
         public int getStIcon() {
             return stIcon;
@@ -134,6 +181,16 @@ public class GDHelper {
         public GDHelper build(Context context) {
             if (apiKey == null) throw new NullPointerException("must setApiKey() before build");
             AMapNavi.setApiKey(context, apiKey);
+
+
+            if (isOpenXFYunVoice) {
+                StringBuffer param = new StringBuffer();
+                param.append("appid=" + xFYunId);
+                param.append(",");
+                // 设置使用v5+
+                param.append(SpeechConstant.ENGINE_MODE + "=" + SpeechConstant.MODE_MSC);
+                SpeechUtility.createUtility(context, param.toString());
+            }
             return new GDHelper(this);
         }
     }

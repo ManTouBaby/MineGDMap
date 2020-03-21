@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        gdHelper = GDManager.getInstance(getApplicationContext()).getGdHelper();
+        gdHelper = GDManager.getInstance().getGdHelper();
     }
 
     public void onBtnClick(View view) {
