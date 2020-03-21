@@ -1,11 +1,13 @@
 package com.hrw.gdlibrary;
 
+import java.io.Serializable;
+
 /**
  * @author:MtBaby
  * @date:2020/03/21 16:36
  * @desc:
  */
-public class XFYunOption {
+public class XFYunOption implements Serializable {
     private String SPEED = "50";//设置合成语速
     private String  PITCH= "50";//设置合成音调
     private String  VOLUME= "50";//设置合成音量
