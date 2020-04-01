@@ -2,6 +2,9 @@ package com.hrw.gdlibrary.navi;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,9 +38,6 @@ import com.hrw.gdlibrary.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.IdRes;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 
 /**

@@ -2,6 +2,7 @@ package com.hrw.gdlibrary;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.DrawableRes;
 
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.enums.NaviType;
@@ -12,7 +13,6 @@ import com.iflytek.cloud.SpeechUtility;
 
 import java.io.Serializable;
 
-import androidx.annotation.DrawableRes;
 
 /**
  * @version 1.0.0

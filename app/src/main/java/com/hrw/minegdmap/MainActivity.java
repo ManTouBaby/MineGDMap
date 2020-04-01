@@ -1,12 +1,12 @@
 package com.hrw.minegdmap;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hrw.gdlibrary.DatesHolder;
 import com.hrw.gdlibrary.GDHelper;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -20,7 +20,7 @@ public class GDManager {
         mGdHelper = new GDHelper.Builder()
 //                .setApiKey("29ee6dfa46f2774ccb76586221194f50")//公司电脑
                 .setApiKey("2bff4221a6149f587e5cf0b8c60d4715")//家庭电脑
-                .setOpenXFYunVoice(true)
+                .setOpenXFYunVoice(false)
                 .setStIcon(R.mipmap.start)
                 .setEndIcon(R.mipmap.end)
                 .setNaviType(NaviType.EMULATOR)
