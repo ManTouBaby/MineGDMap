@@ -25,19 +25,21 @@ import java.io.Serializable;
  * @desc:
  */
 public class GDHelper {
+    private LocationManager mLocationManager;
     private Builder mBuilder;
 
-    private GDHelper(Builder builder) {
+    private GDHelper(Builder builder, LocationManager mLocationManager) {
         mBuilder = builder;
+        this.mLocationManager = mLocationManager;
     }
 
 
     public void startSingleLocation(AMapLocationListener aMapLocationListener) {
-        mBuilder.getLocationManager().startSingleLocation(aMapLocationListener);
+        mLocationManager.startSingleLocation(aMapLocationListener);
     }
 
     public void startContinueLocation(AMapLocationListener aMapLocationListener) {
-        mBuilder.getLocationManager().startContinueLocation(aMapLocationListener);
+        mLocationManager.startContinueLocation(aMapLocationListener);
     }
 
     public void openNavigation(Context context, NaviLatLng stLocation, NaviLatLng endLocation) {
@@ -66,7 +68,7 @@ public class GDHelper {
         private boolean isOpenXFYunVoice = false;//是否开启讯飞语音播放
         private String xFYunId = "5bee8844";//测试使用ID
         private XFYunOption xfYunOption = new XFYunOption();
-        private LocationManager mLocationManager;
+
 
         private int stIcon = 0;
         private int endIcon = 0;
@@ -170,13 +172,6 @@ public class GDHelper {
             return this;
         }
 
-        public LocationManager getLocationManager() {
-            return mLocationManager;
-        }
-
-        public void setLocationManager(LocationManager mLocationManager) {
-            this.mLocationManager = mLocationManager;
-        }
 
         public boolean isCongestion() {
             return isCongestion;
@@ -201,7 +196,6 @@ public class GDHelper {
         public GDHelper build(Context context) {
             if (apiKey == null) throw new NullPointerException("must setApiKey() before build");
             AMapNavi.setApiKey(context, apiKey);
-            mLocationManager = LocationManager.getInstance(context);
 
             if (isOpenXFYunVoice) {
                 StringBuffer param = new StringBuffer();
@@ -211,7 +205,7 @@ public class GDHelper {
                 param.append(SpeechConstant.ENGINE_MODE + "=" + SpeechConstant.MODE_MSC);
                 SpeechUtility.createUtility(context, param.toString());
             }
-            return new GDHelper(this);
+            return new GDHelper(this, LocationManager.getInstance(context));
         }
     }
 }
