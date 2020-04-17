@@ -1,13 +1,17 @@
 package com.hrw.gdlibrary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.DrawableRes;
 
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.enums.NaviType;
 import com.amap.api.navi.model.NaviLatLng;
+import com.hrw.gdlibrary.location.LocationManager;
 import com.hrw.gdlibrary.navi.DefaultMapActivity;
+import com.hrw.gdlibrary.nearby.NearbyMapActivity;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 
@@ -28,10 +32,13 @@ public class GDHelper {
     }
 
 
-    public void addObserver() {
-
+    public void startSingleLocation(AMapLocationListener aMapLocationListener) {
+        mBuilder.getLocationManager().startSingleLocation(aMapLocationListener);
     }
 
+    public void startContinueLocation(AMapLocationListener aMapLocationListener) {
+        mBuilder.getLocationManager().startContinueLocation(aMapLocationListener);
+    }
 
     public void openNavigation(Context context, NaviLatLng stLocation, NaviLatLng endLocation) {
         Intent intent = new Intent(context, DefaultMapActivity.class);
@@ -41,6 +48,11 @@ public class GDHelper {
         context.startActivity(intent);
     }
 
+    public void openNearby(Activity context, int requestCode) {
+        Intent intent = new Intent(context, NearbyMapActivity.class);
+        intent.putExtra("Builder", mBuilder);
+        context.startActivityForResult(intent, requestCode);
+    }
 
     public static class Builder implements Serializable {
         // 注意: 不走高速与高速优先不能同时为true 高速优先与避免收费不能同时为true
@@ -54,6 +66,7 @@ public class GDHelper {
         private boolean isOpenXFYunVoice = false;//是否开启讯飞语音播放
         private String xFYunId = "5bee8844";//测试使用ID
         private XFYunOption xfYunOption = new XFYunOption();
+        private LocationManager mLocationManager;
 
         private int stIcon = 0;
         private int endIcon = 0;
@@ -157,6 +170,13 @@ public class GDHelper {
             return this;
         }
 
+        public LocationManager getLocationManager() {
+            return mLocationManager;
+        }
+
+        public void setLocationManager(LocationManager mLocationManager) {
+            this.mLocationManager = mLocationManager;
+        }
 
         public boolean isCongestion() {
             return isCongestion;
@@ -181,7 +201,7 @@ public class GDHelper {
         public GDHelper build(Context context) {
             if (apiKey == null) throw new NullPointerException("must setApiKey() before build");
             AMapNavi.setApiKey(context, apiKey);
-
+            mLocationManager = LocationManager.getInstance(context);
 
             if (isOpenXFYunVoice) {
                 StringBuffer param = new StringBuffer();

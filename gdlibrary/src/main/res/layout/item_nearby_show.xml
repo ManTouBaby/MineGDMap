@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/mt_location_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="地点名称"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/mt_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mt_location_name"
+            android:layout_marginTop="6dp"
+            android:text="距离"
+            android:textColor="#888"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/mt_v"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/mt_distance"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_toRightOf="@+id/mt_distance"
+            android:background="#888"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/mt_location_road"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/mt_distance"
+            android:layout_toRightOf="@+id/mt_v"
+            android:text="街道"
+            android:textColor="#888"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_select_tag"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginRight="16dp"
+        android:padding="3dp"
+        android:src="@mipmap/icon_select"
+        android:visibility="gone" />
+</LinearLayout>

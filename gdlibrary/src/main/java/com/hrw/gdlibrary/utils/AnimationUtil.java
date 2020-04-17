@@ -1,4 +1,4 @@
-package com.hrw.gdlibrary;
+package com.hrw.gdlibrary.utils;
 
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;

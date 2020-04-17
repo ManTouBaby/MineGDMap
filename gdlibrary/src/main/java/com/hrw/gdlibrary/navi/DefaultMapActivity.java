@@ -26,7 +26,7 @@ import com.amap.api.navi.model.AMapCalcRouteResult;
 import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.NaviLatLng;
 import com.amap.api.navi.view.RouteOverLay;
-import com.hrw.gdlibrary.AnimationUtil;
+import com.hrw.gdlibrary.utils.AnimationUtil;
 import com.hrw.gdlibrary.GDHelper;
 import com.hrw.gdlibrary.R;
 import com.iflytek.cloud.ErrorCode;

@@ -14,7 +14,9 @@
 
     <application>
         <activity android:name=".navi.DefaultMapActivity" />
+        <activity android:name=".nearby.NearbyMapActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
+        <service android:name=".location.LocalService" />
     </application>
 </manifest>

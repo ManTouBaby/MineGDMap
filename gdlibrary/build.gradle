@@ -2,6 +2,10 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 26
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 26
@@ -26,9 +30,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     //高德地图
     api 'com.amap.api:location:4.4.0'
-    //    api 'com.amap.api:3dmap:7.2.0'
-    //    api 'com.amap.api:map2d:5.2.0'
     api 'com.amap.api:navi-3dmap:7.2.0_3dmap7.2.0'
     api 'com.amap.api:search:6.1.0'
     api files('libs/Msc.jar')
+    implementation 'com.android.support:design:26.1.0'
 }
