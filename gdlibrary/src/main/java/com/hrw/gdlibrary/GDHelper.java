@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.support.annotation.DrawableRes;
 
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.enums.NaviType;
 import com.amap.api.navi.model.NaviLatLng;
 import com.hrw.gdlibrary.location.LocationManager;
@@ -58,7 +57,6 @@ public class GDHelper {
 
     public static class Builder implements Serializable {
         // 注意: 不走高速与高速优先不能同时为true 高速优先与避免收费不能同时为true
-        private String apiKey = "";
         private boolean isCongestion = true;//是否避免拥堵
         private boolean isAvoidHighWay = false;//是否避免高速
         private boolean isAvoidCost = false;//是否避免收费
@@ -130,15 +128,6 @@ public class GDHelper {
             return this;
         }
 
-        public String getApiKey() {
-            return apiKey;
-        }
-
-
-        public Builder setApiKey(String apiKey) {
-            this.apiKey = apiKey;
-            return this;
-        }
 
         public Builder setAvoidHighWay(boolean avoidHighWay) {
             isAvoidHighWay = avoidHighWay;
@@ -194,8 +183,6 @@ public class GDHelper {
         }
 
         public GDHelper build(Context context) {
-            if (apiKey == null) throw new NullPointerException("must setApiKey() before build");
-            AMapNavi.setApiKey(context, apiKey);
 
             if (isOpenXFYunVoice) {
                 StringBuffer param = new StringBuffer();

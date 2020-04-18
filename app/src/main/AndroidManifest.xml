@@ -30,9 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <meta-data-->
-<!--            android:name="com.amap.api.v2.apikey"-->
-<!--            android:value="2bff4221a6149f587e5cf0b8c60d4715" />-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="2bff4221a6149f587e5cf0b8c60d4715" />
     </application>
 
 </manifest>
