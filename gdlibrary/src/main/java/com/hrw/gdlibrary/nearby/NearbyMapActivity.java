@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
@@ -101,8 +102,10 @@ public class NearbyMapActivity extends AppCompatActivity {
         });
     }
 
+    AMapLocationListener mAMaoAMapLocationListener;
+
     private void initLocation() {
-        LocationManager.getInstance(this).startSingleLocation(aMapLocation -> {
+        LocationManager.getInstance(this).startContinueLocation(mAMaoAMapLocationListener = aMapLocation -> {
             if (aMapLocation.getErrorCode() == 0) {
                 //定位成功回调信息，设置相关消息
                 aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
@@ -112,7 +115,7 @@ public class NearbyMapActivity extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(aMapLocation.getTime());
                 df.format(date);//定位时间
-//                System.out.println("启用定位:" + aMapLocation.getAddress() + " " + aMapLocation.getStreetNum() + "  " + aMapLocation.getStreet());
+                System.out.println("NearbyMapActivity启用定位:" + aMapLocation.getAddress() + " " + aMapLocation.getStreetNum() + "  " + aMapLocation.getStreet());
                 mMyLocal = new LatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());
                 addMarkerInScreenCenter(mMyLocal);
             }
@@ -204,6 +207,7 @@ public class NearbyMapActivity extends AppCompatActivity {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
         mMapView.onDestroy();
+        LocationManager.getInstance(this).closeLcationListener(mAMaoAMapLocationListener);
     }
 
     @Override
