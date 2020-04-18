@@ -86,7 +86,7 @@ public class NearbyMapActivity extends AppCompatActivity {
         mMapView = findViewById(R.id.map_view);
         mMapView.onCreate(savedInstanceState);
         mAMap = mMapView.getMap();
-        mAMap.setOnMapLoadedListener(this::initLocation);
+        initLocation();
         mAMap.setOnCameraChangeListener(new AMap.OnCameraChangeListener() {
             @Override
             public void onCameraChange(CameraPosition cameraPosition) {
@@ -105,7 +105,7 @@ public class NearbyMapActivity extends AppCompatActivity {
     AMapLocationListener mAMaoAMapLocationListener;
 
     private void initLocation() {
-        LocationManager.getInstance(this).startContinueLocation(mAMaoAMapLocationListener = aMapLocation -> {
+        LocationManager.getInstance(this).startSingleLocation(mAMaoAMapLocationListener = aMapLocation -> {
             if (aMapLocation.getErrorCode() == 0) {
                 //定位成功回调信息，设置相关消息
                 aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
