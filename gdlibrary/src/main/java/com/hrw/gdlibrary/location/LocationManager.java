@@ -68,7 +68,7 @@ public class LocationManager {
         mLocationClient.startLocation();
     }
 
-    public void closeLcationListener(AMapLocationListener aMapLocationListener){
+    public void closeLocationListener(AMapLocationListener aMapLocationListener){
         mLocationClient.unRegisterLocationListener(aMapLocationListener);
     }
 

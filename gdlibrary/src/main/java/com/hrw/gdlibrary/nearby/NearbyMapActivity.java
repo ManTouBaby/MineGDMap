@@ -207,7 +207,7 @@ public class NearbyMapActivity extends AppCompatActivity {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
         mMapView.onDestroy();
-        LocationManager.getInstance(this).closeLcationListener(mAMaoAMapLocationListener);
+        LocationManager.getInstance(this).closeLocationListener(mAMaoAMapLocationListener);
     }
 
     @Override

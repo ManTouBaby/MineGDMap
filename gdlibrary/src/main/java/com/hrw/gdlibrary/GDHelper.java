@@ -41,6 +41,10 @@ public class GDHelper {
         mLocationManager.startContinueLocation(aMapLocationListener);
     }
 
+    public void closeLocationListener(AMapLocationListener aMapLocationListener) {
+        mLocationManager.closeLocationListener(aMapLocationListener);
+    }
+
     public void openNavigation(Context context, NaviLatLng stLocation, NaviLatLng endLocation) {
         Intent intent = new Intent(context, DefaultMapActivity.class);
         intent.putExtra("Builder", mBuilder);
