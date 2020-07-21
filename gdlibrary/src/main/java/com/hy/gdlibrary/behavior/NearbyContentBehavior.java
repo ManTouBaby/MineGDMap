@@ -31,15 +31,15 @@ public class NearbyContentBehavior extends CoordinatorLayout.Behavior<RelativeLa
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, RelativeLayout child, View dependency) {
         ViewGroup.LayoutParams layoutParams = child.getLayoutParams();
-        layoutParams.width = (int) (dependency.getBottom() - dependency.getY() + 192);
+        layoutParams.height = (int) (dependency.getBottom() - dependency.getTop());
         child.setLayoutParams(layoutParams);
-        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(dependency);
-        int peekHeight = bottomSheetBehavior.getPeekHeight();
-        int bottom = child.getBottom();
-        int i = dependency.getMeasuredHeight() - peekHeight;
-        System.out.println("滚动:" + dependency.getMeasuredHeight() + "====" + dependency.getY() + "--" + bottom);
-        int v = (int) (dependency.getMeasuredHeight() - dependency.getY());
-        child.scrollBy(0, v);
+//        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(dependency);
+//        int peekHeight = bottomSheetBehavior.getPeekHeight();
+//        int bottom = child.getBottom();
+//        int i = dependency.getMeasuredHeight() - peekHeight;
+//        System.out.println("滚动:" + dependency.getMeasuredHeight() + "====" + dependency.getY() + "--" + bottom);
+//        int v = (int) (dependency.getMeasuredHeight() - dependency.getY());
+//        child.scrollBy(0, v);
         return super.onDependentViewChanged(parent, child, dependency);
     }
 }
