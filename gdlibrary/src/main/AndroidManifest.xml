@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hrw.gdlibrary">
+    package="com.hy.gdlibrary">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,10 +13,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
-        <activity android:name=".navi.DefaultMapActivity" />
-        <activity android:name=".nearby.NearbyMapActivity" />
+        <activity android:name="com.hy.gdlibrary.navi.DefaultMapActivity" />
+        <activity android:name="com.hy.gdlibrary.nearby.NearbyMapActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
 
         <service android:name="com.amap.api.location.APSService" />
-        <service android:name=".location.LocalService" />
+        <service android:name="com.hy.gdlibrary.location.LocalService" />
     </application>
 </manifest>

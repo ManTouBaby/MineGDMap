@@ -7,7 +7,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     defaultConfig {
-        applicationId "com.hrw.minegdmap"
+        applicationId "com.hy.minegdmap"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -16,6 +16,20 @@ android {
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
             abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","x86_64"
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('D:\\ccfcodekey\\hy.jks')//签名文件路径
+            storePassword "hy123456"
+            keyAlias "gzhy"
+            keyPassword "hy123456"  //签名密码
+        }
+        release {
+            storeFile file('D:\\ccfcodekey\\hy.jks')//签名文件路径
+            storePassword "hy123456"
+            keyAlias "gzhy"
+            keyPassword "hy123456"  //签名密码
         }
     }
     buildTypes {
