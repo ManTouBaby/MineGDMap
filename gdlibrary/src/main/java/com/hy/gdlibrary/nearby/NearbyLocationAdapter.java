@@ -54,7 +54,9 @@ public class NearbyLocationAdapter extends RecyclerView.Adapter<SmartVH> {
             notifyItemChanged(selectItem);
             selectItem = position;
             notifyItemChanged(selectItem);
-
+            if (mOnNearbyItemClickListener!=null){
+                mOnNearbyItemClickListener.onNearbyClick(poiItems.get(selectItem).getPoiItem());
+            }
         });
     }
 
@@ -126,5 +128,15 @@ public class NearbyLocationAdapter extends RecyclerView.Adapter<SmartVH> {
     @Override
     public int getItemCount() {
         return poiItems.size();
+    }
+
+    private OnNearbyItemClickListener mOnNearbyItemClickListener;
+
+    public void setOnNearbyItemClickListener(OnNearbyItemClickListener mOnNearbyItemClickListener) {
+        this.mOnNearbyItemClickListener = mOnNearbyItemClickListener;
+    }
+
+    public static interface OnNearbyItemClickListener {
+        void onNearbyClick(PoiItem poiItem);
     }
 }

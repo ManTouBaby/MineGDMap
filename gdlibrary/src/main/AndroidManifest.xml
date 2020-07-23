@@ -13,12 +13,17 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
-        <activity android:name="com.hy.gdlibrary.navi.DefaultMapActivity" />
-        <activity android:name="com.hy.gdlibrary.nearby.NearbyMapActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait"/>
+        <activity android:name="com.hy.gdlibrary.navigation.DefaultMapActivity" />
+        <activity
+            android:name="com.hy.gdlibrary.nearby.NearbyMapActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".track.MapTrack"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.amap.api.location.APSService" />
         <service android:name="com.hy.gdlibrary.location.LocalService" />
+        <service android:name=".track.MapTrackService" />
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-package com.hy.gdlibrary.navi;
+package com.hy.gdlibrary.navigation;
 
 import android.graphics.Color;
 import android.os.Bundle;

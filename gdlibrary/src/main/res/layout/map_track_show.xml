@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e0e0e0"
+    android:orientation="vertical">
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="96dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/map_icon_track_details_show"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/map_icon_start"
+                            android:gravity="center"
+                            android:text="始"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/map_start_local"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:textColor="#333"
+                            android:textSize="15sp"
+                            tools:text="信息一" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="18dp"
+                        android:layout_height="12dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@mipmap/map_between_start_end"
+                        android:scaleType="fitXY" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/map_icon_end"
+                            android:gravity="center"
+                            android:text="终"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/map_end_local"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:textColor="#666"
+                            android:textSize="15sp"
+                            tools:text="信息一" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/map_icon_play">
+
+                    <TextView
+                        android:id="@+id/map_play_track"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:text="播放"
+                        android:textColor="#FFF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/nsv_content_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/map_icon_track_details_show"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="信息一" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="信息一" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="信息一" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="信息一" />
+                </LinearLayout>
+
+
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>

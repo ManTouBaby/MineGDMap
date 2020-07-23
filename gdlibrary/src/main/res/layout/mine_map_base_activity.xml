@@ -35,7 +35,7 @@
                 android:onClick="navigationTypeClick"
                 android:paddingTop="14dp"
                 android:paddingBottom="6dp"
-                android:src="@drawable/icon_svg_car"
+                android:src="@drawable/map_icon_svg_car"
                 android:textColor="#F5f5f5"
                 android:textSize="18sp" />
 
@@ -48,7 +48,7 @@
                 android:onClick="navigationTypeClick"
                 android:paddingTop="15dp"
                 android:paddingBottom="4dp"
-                android:src="@drawable/icon_svg_bike"
+                android:src="@drawable/map_icon_svg_bike"
                 android:textColor="#F5f5f5"
                 android:textSize="18sp" />
 
@@ -61,7 +61,7 @@
                 android:onClick="navigationTypeClick"
                 android:paddingTop="14dp"
                 android:paddingBottom="10dp"
-                android:src="@drawable/icon_svg_walk"
+                android:src="@drawable/map_icon_svg_walk"
                 android:textColor="#F5f5f5"
                 android:textSize="18sp" />
 
@@ -79,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/icon_white_menu_bg"
+        android:background="@drawable/map_icon_white_menu_bg"
         android:orientation="vertical"
         android:padding="8dp">
 
@@ -151,7 +151,7 @@
                 android:id="@+id/mine_start_navigation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/icon_blue_corner_bg"
+                android:background="@drawable/map_icon_blue_corner_bg"
                 android:paddingLeft="20dp"
                 android:paddingTop="4dp"
                 android:paddingRight="20dp"

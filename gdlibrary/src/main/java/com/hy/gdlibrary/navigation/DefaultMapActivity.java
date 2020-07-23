@@ -1,4 +1,4 @@
-package com.hy.gdlibrary.navi;
+package com.hy.gdlibrary.navigation;
 
 import android.annotation.SuppressLint;
 import android.graphics.BitmapFactory;
@@ -68,7 +68,7 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
     private SparseArray<AMapNaviPath> mapNaviPathSparseArray = new SparseArray<>();//保存当前算好的路线
 
     private int strategy;
-    private GDHelper.Builder mBuilder;
+    private GDHelper.NavigationClient mBuilder;
     private NaviLatLng stLocation;
     private NaviLatLng endLocation;
     private SpeechSynthesizer mTts;
@@ -104,7 +104,7 @@ public class DefaultMapActivity extends BaseMapActivity implements AMapNaviListe
 
     @Override
     protected void init() {
-        mBuilder = (GDHelper.Builder) getIntent().getSerializableExtra("Builder");
+        mBuilder = (GDHelper.NavigationClient) getIntent().getSerializableExtra("NavigationClient");
         stLocation = getIntent().getParcelableExtra("stLocation");
         endLocation = getIntent().getParcelableExtra("endLocation");
 

@@ -3,11 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <com.amap.api.maps.MapView
-        android:id="@+id/mine_map_show"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    
 
     <ImageView
         android:id="@+id/location_get_my_local"

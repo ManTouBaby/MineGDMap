@@ -4,14 +4,14 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_weight="1"
-    android:background="@drawable/icon_rout_line_bg"
+    android:background="@drawable/map_icon_rout_line_bg"
     android:orientation="vertical"
     android:padding="0.5dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/icon_blue_gray_bg"
+        android:background="@drawable/map_icon_blue_gray_bg"
         android:gravity="center"
         android:paddingBottom="2dp"
         android:textColor="@color/color_white_black"

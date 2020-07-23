@@ -18,10 +18,8 @@ public class GDManager {
     private GDManager(Context context) {
 
         mGdHelper = new GDHelper.Builder()
-                .setOpenXFYunVoice(false)
-                .setStIcon(R.mipmap.start)
-                .setEndIcon(R.mipmap.end)
-                .setNaviType(NaviType.EMULATOR)
+                .setOpenLocal(true)
+                .setServiceId(164385)
                 .build(context);
     }
 

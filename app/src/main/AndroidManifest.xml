@@ -31,6 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MyLocal" />
+        <activity android:name=".ACMultipoint" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

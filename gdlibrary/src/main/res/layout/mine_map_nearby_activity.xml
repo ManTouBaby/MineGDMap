@@ -13,24 +13,25 @@
         <com.amap.api.maps.MapView
             android:id="@+id/map_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="#e1e1e1" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="33dp"
         android:gravity="center_vertical">
 
-        <TextView
+        <ImageView
             android:id="@+id/mt_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:text="取消"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/map_icon_corner_wbg"
+            android:padding="4dp"
+            android:src="@mipmap/map_icon_back"
             android:textColor="#FFF" />
 
         <View
@@ -41,13 +42,12 @@
         <TextView
             android:id="@+id/mt_commit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginRight="16dp"
-            android:background="@drawable/icon_greed_bg"
-            android:paddingLeft="16dp"
-            android:paddingTop="6dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="6dp"
+            android:background="@drawable/map_icon_greed_bg"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
             android:text="确定"
             android:textColor="#FFF" />
     </LinearLayout>
@@ -55,7 +55,7 @@
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="518dp"
+        android:layout_height="520dp"
         android:orientation="vertical"
         app:behavior_hideable="false"
         app:behavior_peekHeight="300dp"
@@ -78,7 +78,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFF"
+                android:background="@drawable/map_nearby_content_bg"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -117,8 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
+                        android:paddingLeft="8dp"
                         android:text="取消"
                         android:visibility="gone" />
                 </LinearLayout>
