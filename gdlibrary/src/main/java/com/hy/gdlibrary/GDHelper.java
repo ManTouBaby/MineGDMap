@@ -38,7 +38,7 @@ public class GDHelper {
     private static GDHelper mGdHelper;
     private static Builder mBuilder;
 
-    public static GDHelper getInstance() {
+    public  GDHelper getInstance() {
         return mGdHelper;
     }
 
@@ -47,14 +47,7 @@ public class GDHelper {
     }
 
     private static GDHelper init(Builder builder) {
-        if (mGdHelper == null) {
-            synchronized (GDHelper.class) {
-                if (mGdHelper == null) {
-                    mGdHelper = new GDHelper(builder);
-                }
-            }
-        }
-        return mGdHelper;
+        return  mGdHelper = new GDHelper(builder);
     }
 
 
