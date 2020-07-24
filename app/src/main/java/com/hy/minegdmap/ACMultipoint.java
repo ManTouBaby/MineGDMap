@@ -137,6 +137,7 @@ public class ACMultipoint extends AppCompatActivity implements MultipointFragmen
         List<MultipointBo> multipointBos = new ArrayList<>();
         for (int i = 0; i < points.size(); i++) {
             Point p = points.get(i);
+
 //            LatLng latLng = new LatLng(p.getLat(), p.getLng());
 //            polylineOptions.add(latLng);
 //            boundsBuilder.include(latLng);

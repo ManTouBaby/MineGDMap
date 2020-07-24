@@ -101,8 +101,7 @@ public class GDHelper {
 
     public void uploadTrack(Context context, String terminalName) {
         if (mBuilder.serviceId == 0) {
-            Toast.makeText(context, "调用轨迹上传之前，需要设置ServiceID", Toast.LENGTH_SHORT).show();
-            return;
+            throw new NullPointerException("调用轨迹上传之前，需要设置ServiceID");
         }
         Intent intent = new Intent(context, MapTrackService.class);
         intent.putExtra(MapTrackService.controlTypeTag, 0);
@@ -110,10 +109,9 @@ public class GDHelper {
         context.startService(intent);
     }
 
-    public void colseUploadTrack(Context context, String terminalName) {
+    public void closeUploadTrack(Context context, String terminalName) {
         if (mBuilder.serviceId == 0) {
-            Toast.makeText(context, "关闭轨迹上传之前，需要设置ServiceID", Toast.LENGTH_SHORT).show();
-            return;
+            throw new NullPointerException("关闭轨迹上传之前，需要设置ServiceID");
         }
         Intent intent = new Intent(context, MapTrackService.class);
         intent.putExtra(MapTrackService.controlTypeTag, 1);
@@ -167,9 +165,10 @@ public class GDHelper {
         public GDHelper build(Context context) {
             if (isOpenLocal) mLocationManager = LocationManager.getInstance(context);
             if (isOpenTrack) {
+                if (serviceId == 0) throw new NullPointerException("开启轨迹功能，必须设置ServiceId");
                 mMapTrackManger = MapTrackManger.getInstance(context.getApplicationContext());
             }
-            return new GDHelper(this);
+            return  GDHelper.init(this);
         }
     }
 

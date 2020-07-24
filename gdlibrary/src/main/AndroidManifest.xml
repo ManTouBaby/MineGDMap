@@ -23,7 +23,7 @@
             android:screenOrientation="portrait" />
 
         <service android:name="com.amap.api.location.APSService" />
-        <service android:name="com.hy.gdlibrary.location.LocalService" />
+        <service android:name="com.amap.api.track.AMapTrackService"/>
         <service android:name=".track.MapTrackService" />
     </application>
 </manifest>

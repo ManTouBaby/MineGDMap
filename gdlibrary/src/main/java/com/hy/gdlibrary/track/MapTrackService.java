@@ -28,6 +28,7 @@ import com.amap.api.track.query.model.QueryTerminalResponse;
 import com.hy.gdlibrary.GDHelper;
 import com.hy.gdlibrary.R;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -47,10 +48,10 @@ public class MapTrackService extends Service implements OnCustomAttributeListene
     @Override
     public void onCreate() {
         super.onCreate();
+        mGdHelper = GDHelper.getInstance();
         aMapTrackClient = mGdHelper.getMapTrackManger().getAMapTrackClient();
         aMapTrackClient.setInterval(5, 30);
         aMapTrackClient.setOnCustomAttributeListener(this);
-        mGdHelper = GDHelper.getInstance();
     }
 
     @Override
@@ -93,6 +94,7 @@ public class MapTrackService extends Service implements OnCustomAttributeListene
                                 if (addTrackResponse.isSuccess()) {
                                     // trackId需要在启动服务后设置才能生效，因此这里不设置，而是在startGather之前设置了track id
                                     mTrackId = addTrackResponse.getTrid();
+                                    Log.i("MapTrackService---->", "创建新轨迹成功:" + mTrackId);
                                     TrackParam trackParam = new TrackParam(mGdHelper.getServiceId(), mTerminalId);
                                     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                                         trackParam.setNotification(createNotification());
@@ -163,7 +165,7 @@ public class MapTrackService extends Service implements OnCustomAttributeListene
         public void onStartTrackCallback(int status, String msg) {
             if (status == ErrorCode.TrackListen.START_TRACK_SUCEE || status == ErrorCode.TrackListen.START_TRACK_SUCEE_NO_NETWORK) {
                 // 成功启动
-                Log.i("MapTrackService---->", "启动服务成功");
+                Log.i("MapTrackService---->", "启动服务成功->开始上传轨迹" + mTrackId);
                 aMapTrackClient.setTrackId(mTrackId);
                 aMapTrackClient.startGather(onTrackListener);
             } else if (status == ErrorCode.TrackListen.START_TRACK_ALREADY_STARTED) {
@@ -209,6 +211,8 @@ public class MapTrackService extends Service implements OnCustomAttributeListene
 
     @Override
     public Map<String, String> onTrackAttributeCallback() {
+        Map<String,String> params = new HashMap<>();
+        params.put("TerminalName",mTerminalName);
         return null;
     }
 }

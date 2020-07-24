@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ACMultipoint.class);
             startActivity(intent);
         });
-        userId = mEditText.getText().toString();
-        findViewById(R.id.bt_upload_track).setOnClickListener(v -> {
 
+        findViewById(R.id.bt_upload_track).setOnClickListener(v -> {
+            userId = mEditText.getText().toString();
             if (TextUtils.isEmpty(userId)) {
                 Toast.makeText(this, "请输入用户ID", Toast.LENGTH_SHORT).show();
                 return;
@@ -52,11 +52,12 @@ public class MainActivity extends AppCompatActivity {
             gdHelper.uploadTrack(this, userId);
         });
         findViewById(R.id.bt_close_upload_track).setOnClickListener(v -> {
+            userId = mEditText.getText().toString();
             if (TextUtils.isEmpty(userId)) {
                 Toast.makeText(this, "请输入用户ID", Toast.LENGTH_SHORT).show();
                 return;
             }
-            gdHelper.colseUploadTrack(this, userId);
+            gdHelper.closeUploadTrack(this, userId);
         });
 
         LocationManager.getInstance(this).startContinueLocation(aMapLocation -> {

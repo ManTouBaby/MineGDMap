@@ -16,9 +16,9 @@ public class GDManager {
     private GDHelper mGdHelper;
 
     private GDManager(Context context) {
-
         mGdHelper = new GDHelper.Builder()
                 .setOpenLocal(true)
+                .setOpenTrack(true)
                 .setServiceId(164385)
                 .build(context);
     }
